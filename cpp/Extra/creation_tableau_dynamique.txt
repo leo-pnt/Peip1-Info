@@ -1,0 +1,16 @@
+ 
+//declaration
+
+TYPE * NOM_TABLEAU;
+
+//allocation
+
+NOM_TABLEAU = new TYPE[N]; //N nb de case dans la première dimension. Peut etre variable.
+                           //ajouter NB-1* pour une autre dimension (??)
+
+NOM_TABLEAU[2] = 48;
+cout << NOM_TABLEAU[2];
+
+//desallocation
+
+delete[] NOM_TABLEAU;

@@ -1,0 +1,146 @@
+
+#GET ASCII
+    >>> ord('a')
+    97
+    >>> chr(97)
+    'a'
+
+#FILE MANAGEMENT
+
+    #store file in memory
+    file_object = open(string <filename>, string <mode>)
+    <mode> : 'r' read, 'w' write(any existing file will be overwritten),
+    'a' append(add new data to file), 'r+' read & write mode(both)
+    'rb' read binary files
+
+    #show file
+    print(file_object)
+
+    #create a file
+    >>> file = open(string <filename>, string 'w')
+    >>> file.write("hello")
+    >>> file.write("world") #created on a new line
+    >>> file.close()
+
+    #also exist :
+    >>> lines_of_text = [“One line of text here”, “and another line here”]
+    >>> file.writelines(lines_of_text)
+
+    #CLEAN way of openning a file
+    >>> with open(string <filename>, string <mode>) as file:
+            #instructions as normal
+            #no need to close the file
+
+    #read a file
+    >>> file = open(string <filename>, string 'r')
+    >>> print(file.read())
+    hello
+    world
+    >>> print(file.read(5))
+    hello
+    >>> print(file.readline())
+    hello world
+    >>> print(file.readline(2))
+    world
+    >>> print(file.readlines()) #with an s at readlineS
+    ['hello', 'world']
+    >>> for line in file:
+            print(line) #MORE memory efficient
+    hello
+    world
+    >>> file.close()
+
+    #append a file
+    >>> file = open(string <filename>, string 'a')
+    >>> file.write("hello again")
+    >>> file.close()
+
+#STRINGs
+
+    #split
+    >>> line = "hello world"
+    >>> line.split()
+    ['hello', 'world']
+    >>> line = "hello_world"
+    >>> line.split(_)
+    ['hello', 'world']
+
+    #maketrans
+    >>> from string import maketrans   # Required to call maketrans function.
+    >>> intab = "aeiou"
+    >>> outtab = "12345"
+    >>> trantab = maketrans(intab, outtab)
+    >>> str = "this is string example....wow!!!"
+    >>> print str.translate(trantab)
+    th3s 3s str3ng 2x1mpl2....w4w!!!
+
+    #islower() isupper()
+    >>> 'a'.islower()
+    True
+    >>> 'A'.isupper()
+    True
+
+#URL MANAGEMENT
+
+    #urllib
+    >>> from urllib.request import urlopen
+    >>> webUrl = urlopen('http://weburl.com/url.php')
+    >>> rawData = webUrl.read()
+    b'some data found on the site'
+    >>> rawData.decode(encoding='UTF-8', errors='strict')
+    'some data found on the site'
+
+#SERIALIZATION
+
+    #pickle
+    >>> import pickle()
+    >>> emp = {1:"A",2:"B",3:"C",4:"D",5:"E"}
+    >>> pickling_on = open("Emp.pickle","wb")
+    >>> pickle.dump(emp, pickling_on)
+    >>> pickling_on.close()
+
+    #unpickle
+    >>> pickle_off = open("Emp.pickle","rb")
+    >>> emp = pickle.load(pickle_off)
+    >>> print(emp)
+
+#ARCHIVE
+
+    #Zipfile
+    from zipfile import Zipfile
+    with Zipfile(string <filename>, string <mode>) as zip:
+    # printing all the contents of the zip file
+    zip.printdir()
+    # extracting all the files to CWD
+    zip.extractall()
+    # extract only a file in the zip
+    zip.extract('python_files/python_wiki.txt')
+    # read specific file
+    data = zip.read(string <filename>)
+    # get comment from the archive member
+    info = zip.getinfo(string <filename>)
+
+    #bz2 compression
+    import bz2
+    bz2.decompress(b'string to decompress')
+
+#IMAGE
+    from PIL import Image
+    #open IMAGE
+    with Image.open(string <imgFileName>) as im:
+        #read image
+        data = im.load()
+        #size of img
+        print(im.size) #where im.size is a tuple (x,y)
+        #print a pixel RGBA value
+        print(pix[x,y])
+
+    #draw polygon
+        from PIL import Image,ImageDraw
+
+        #create a 500x500 image
+        im = Image.new('RGB', (500,500))
+        #dot per dot polygon creation
+        draw.polygon([146,399,163,403,170,393,169,391,166,...], fill='white')
+        draw.polygon([156,141,165,135,169,131,176,130,...], fill='white')
+        im.show()

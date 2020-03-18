@@ -1,0 +1,7 @@
+//tirage aleatoire
+
+#include <time.h>
+#include <stdlib.h>
+
+srand((unsigned)time(NULL)); //synchro prog avec horloge interne
+rand(0,max); //rand()%2 pour tirage entre 1 et 2
